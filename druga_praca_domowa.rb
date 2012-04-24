@@ -24,7 +24,7 @@ class DrugaPracaDomowa
   end
 end 
 
-DrugaPracaDomowa.first_task 6
-DrugaPracaDomowa.second_task "grgdm#5#gr#8#l#srgqlhv#gr#f}zduwhm#srwhjl"
-DrugaPracaDomowa.third_task "README.md"
-DrugaPracaDomowa.fourth_task "one", "two", "three"
+puts DrugaPracaDomowa.first_task 6
+puts DrugaPracaDomowa.second_task "grgdm#5#gr#8#l#srgqlhv#gr#f}zduwhm#srwhjl"
+puts DrugaPracaDomowa.third_task "README.md"
+puts DrugaPracaDomowa.fourth_task "one", "two", "three"
