@@ -1,25 +1,30 @@
 require 'net/smtp'
 
 class DrugaPracaDomowa
-  def first_task
-     Array.new(6) { |i| i*i }
+  def self.first_task array_size
+     Array.new(array_size) { |i| i*i }
   end
 
-  def second_task
-    deciphered = "grgdm#5#gr#8#l#srgqlhv#gr#f}zduwhm#srwhjl".each_byte { |e| putc e-3 }
+  def self.second_task ciphered_text
+    deciphered = ciphered_text.each_byte { |e| putc e-3 }
     ((2+5)**4).to_s.each_byte.collect { |e| (e+3).chr }.join
   end
 
-  def third_task file_name = "pracadomowa.txt"
+  def self.third_task file_name = "pracadomowa.txt"
     IO.read(file_name)
   end
 
-  def fourth_task
-    smtp = Net::SMTP.start('your.smtp.server', 25)
+  def self.fourth_task *args
+    smtp = Net::SMTP.new('')
     if smtp.method(:check_auth_args).arity == 2
-      smtp.check_auth_args "user", "pass"
+      smtp.send(:check_auth_args, args[0], args[1])
     else
-      smtp.check_auth_args "user", "pass", :auth_type
+      smtp.send(:check_auth_args, args[0], args[1], args[2])
     end
   end
 end 
+
+DrugaPracaDomowa.first_task 6
+DrugaPracaDomowa.second_task "grgdm#5#gr#8#l#srgqlhv#gr#f}zduwhm#srwhjl"
+DrugaPracaDomowa.third_task "README.md"
+DrugaPracaDomowa.fourth_task "one", "two", "three"
